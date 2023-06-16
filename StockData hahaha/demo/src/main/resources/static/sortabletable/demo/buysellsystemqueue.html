@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Table Demo</title>
+    <link rel="stylesheet" href="../dist/table-actions.min.css" />
+    <link rel="stylesheet" href="demo-purpose.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        padding-top: 60px;
+        overflow-x: hidden;
+      }
+      p {
+        font-family: 'Poppins', 'Roboto Condensed', sans-serif;
+        font-size: 1.5rem;
+        text-align: center;
+        /* Add any other styling you want for the <p> element */
+      }
+      h1 {
+        font-family: 'Dosis', sans-serif;
+        font-size: 35px;
+        padding: 10px;
+        color: white;
+        text-shadow: 0 0 100px rgba(0, 0, 0, 0.9);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+      }
+      
+
+      #video-background {
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+    
+      .ta-container {
+        position: relative;
+        z-index: 5;
+      }
+      /* Button styling */
+      .beautiful-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        text-decoration: none;
+        color: black;
+        background: linear-gradient(90deg, #ffffff, #eaeaea);
+        border-radius: 10px;
+        transition: background 0.3s;
+        cursor: pointer;
+        z-index: 100;
+        text-align: center;
+      }
+
+      .beautiful-button:hover {
+        background: linear-gradient(90deg, #eaeaea, #ffffff);
+      
+      }
+      .logo-image {
+        margin-left: 150px; /* Adjust the margin as needed */
+        margin-top:50px;
+        height: 400%; /* Adjust the height of the logo as needed */
+      }
+    </style>
+    
+  </head>
+  <body style="position:relative;">
+    <video id="video-background" autoplay loop muted playsinline>
+      <source src="systemqueue.mp4" type="video/mp4">
+      <!-- Add additional source elements for different video formats if needed -->
+    </video>
+    <audio id="background-audio" loop autoplay>
+      <source src="gg.mp3" type="audio/mpeg">
+      <!-- Add additional source elements for different audio formats if needed -->
+    </audio>
+    
+    <div
+    style="z-index: 99; position: absolute; top: 10px; padding-left:30px; padding-right:30px; left:0; right: 0; height: 65px; display: flex; justify-content: space-between; align-items:center;"
+    >
+      <img onclick="playMusic()" src="sound.png" style="width: 50px; height: 65px; filter: invert(1); cursor: pointer;" />
+      <a href="http://127.0.0.1:5500/demo/src/main/resources/static/dashboard/dashboardfinal.html" class="logo-image"><img src="trademark.png"  alt="Logo" style="width: 100%; height:100%;" class=""></a>
+      
+      <a href="http://127.0.0.1:5500/demo/src/main/resources/static/sortabletable/demo/html-data-table-final.html" class="beautiful-button">Real Time Stock Data</a>
+  </div>
+    <section class="ta-container" id="content">
+      <h1>EZTrade™ System Queue (1m delay)</h1>
+      <p>:Malaysian Clock (MYT):</p>
+      <p id="current-time2"></p> <!-- New <p> element for the current time -->
+        <br />
+        <div class="theme-toggle">
+          <span onclick="toggleTheme()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-circle-half"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"
+              />
+            </svg>
+          </span>
+        </div>
+      <table class="ta ta-responsive-full" >
+        <thead>
+          <tr>
+            <th id="name" class="filter__link" scope="col">Timestamp (MYT) </th>
+            <th id="name" class="filter__link" scope="col">Username</th>
+            <th id="name" class="filter__link" scope="col">Stock Name</th>
+            <th id="high" class="filter__link" scope="col">Number of shares</th>
+            <th id="low" class="filter__link" scope="col">Activity Type</th>
+            <th id="buy" class="filter__link" scope="col">Price per share traded (MYR)</th>
+            <th id="sell" class="filter__link" scope="col">Total (MYR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="stock2 : ${systemqueue}">
+            <td th:text="${stock2.getTimeforactivity}"></td>
+            <td th:text="${stock2.getUser.username}"></td>
+            <td th:text="${stock2.equitiesname}"></td>
+            <td th:text="${stock2.numberofshares}"></td>
+            <td th:text="${stock2.activity}"></td>
+            <td th:text="${stock2.pricespershares}"></td>
+            <td th:text="${stock2.getTotalpriceforhtml}"></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </section>
+    
+    <script src="../dist/table-actions.min.js"></script>
+    <script>
+        let isPlay = false;
+
+        new TableActions("table", {
+          rowsPerPage: 50,
+          sortable: true,
+          searchable: true,
+          checkableRows: true,
+          checkableRowTrReference: "data-row-id",
+          checkedElementsCallback: function (checkedElements) {
+            document.querySelector("#result>span").innerHTML =
+              checkedElements.join(", ");
+          },
+        });
+
+          function playMusic() {
+            var audio = document.getElementById('background-audio');
+            
+            if (!isPlay) {
+              audio.play();
+              
+              isPlay=true;
+            }
+              
+            else {
+              audio.pause();
+              isPlay=false;
+            }
+              
+          }
+          function updateTime() {
+            var currentTimeElement2 = document.getElementById('current-time2');
+            var currentTime2 = new Date().toLocaleTimeString();
+            currentTimeElement2.textContent = currentTime2;
+          }
+
+        // Update time every second
+        setInterval(updateTime, 1000);
+        
+        
+    </script>
+
+    <script src="./demo-purpose.js"></script>
+  </body>
+</html>

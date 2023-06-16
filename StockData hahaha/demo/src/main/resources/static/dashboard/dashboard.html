@@ -1,0 +1,320 @@
+<!Doctype HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title></title>
+	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+
+</head>
+</html>
+<body>
+	
+	<div id="mySidenav" class="sidenav">
+    <p class="logo"><span><img src="trademark.png" class="trademark"></span><br /></p>
+    <br>
+    <a href="http://127.0.0.1:5500/demo/src/main/resources/static/sortabletable/demo/buysellsystemqueuefinal.html" class="icon-a"><i class="fa fa-list icons"></i> &nbsp;&nbsp;Queue</a>
+    <a href="http://127.0.0.1:5500/demo/src/main/resources/static/sortabletable/demo/html-data-table-final.html"class="icon-a"><i class="fa fa-list icons"></i> &nbsp;&nbsp;Stock</a>
+    <a href="http://127.0.0.1:5500/demo/src/main/resources/static/leaderboard/leaderboardfinal.html"class="icon-a"><i class="fa fa-list icons"></i> &nbsp;&nbsp;Leaderboard</a>
+    <a href="http://127.0.0.1:5500/demo/src/main/resources/static/sortabletable/demo/lootpooltablefinal.html"class="icon-a"><i class="fa fa-list icons"></i> &nbsp;&nbsp;500-lot pool</a>
+</div>
+<div id="main">
+  <video autoplay muted loop id="myVideo">
+    <source src="backgroundvideo.mp4" type="video/mp4">
+    <!-- Add additional <source> elements for other video formats if desired -->
+  </video>
+  
+	<div class="head">
+		<div class="col-div-6">
+<span style="font-size:30px;cursor:pointer; color: white;" class="nav"  >&#9776; Dashboard</span>
+<span style="font-size:30px;cursor:pointer; color: white;" class="nav2"  >&#9776; Dashboard</span>
+</div>
+
+	
+	<div class="col-div-6">
+	<div class="profile">
+
+		<img src="user2.png" class="pro-img" />
+		<p th:text="${username}"></p>   <!-- Task 1: Change ur name here-->
+	</div>
+</div>
+  <div class="boxclock">
+    <p style="font-family: 'Font Name', sans-serif; font-size: 24px; color: white; margin-left: 17px;">Malaysian Clock Time (MYT)</p>
+    <p style="font-family: 'Font Name', sans-serif; font-size: 24px; color: white; margin-left: 17px;" id="current-time2"></p>
+
+  </div>
+	<div class="clearfix"></div>
+</div>
+
+	<div class="clearfix"></div>
+	<br/>
+	
+	<div class="col-div-3">
+		<div class="box">
+      <p>RM</p>
+      <p th:text="${accountBalance}"></p><br/>
+			<p><span>Account Balance</span></p>
+		</div>
+	</div>
+	<div class="col-div-3">
+		<div class="box">
+      <p>RM</p>
+      <p th:text="${differenceforday}"></p><br/>
+			<p><span>Daily P&L</span></p>
+		</div>
+	</div>
+	<div class="col-div-3">
+		<div class="box">
+      <p th:text="${plPoints}"></p><p>pts</p><br/>
+			<p><span>Daily P&L Points</span></p>
+		</div>
+	</div>
+	<div class="col-div-3">
+		<div class="box">
+      <p>RM</p>
+      <p th:text="${cumulativeDifference}"></p><br/>
+			<p><span>Cumulative P&L</span></p>
+		</div>
+	</div>
+  <div class="col-div-3">
+		<div class="box">
+      <p th:text="${cumulativePLPoints}"></p><p>pts</p><br/>
+			<p><span>Cumulative P&L Point</span></p>
+		</div>
+	</div>
+  <div class="col-div-3">
+		<div class="box">
+      <p>RM</p>
+      <p th:text="${StartingBalance}"></p><br/>
+			<p><span>Starting Balance</span></p>
+		</div>
+	</div>
+  
+	<div class="clearfix"></div>
+	<br/><br/>
+  
+    <!-- Table 1-->
+	<div class="col-div-8">
+		<div class="box-8">
+		<div class="content-box">
+			<p><header>Your Stocks :</header></p>
+			<br/>
+			<table id="table1">
+  <tr>
+    <th onclick="sortTable('table1',0)" style="cursor: pointer;">Stock Name</th>
+    <th onclick="sortTable('table1',1)" style="cursor: pointer;">Number of shares</th>
+    <th onclick="sortTable('table1',2)" style="cursor: pointer;">Price per share</th>
+    <th onclick="sortTable('table1',3)" style="cursor: pointer;">Total Cost</th>
+    <th onclick="sortTable('table1',4)" style="cursor: pointer;">Market price per share</th>
+    <th onclick="sortTable('table1',5)" style="cursor: pointer;">Market value</th>
+
+  </tr>
+  <tr th:each="stock : ${heldStockss}">
+    <td th:text="${stock.equitiesname}"></td>
+    <td th:text="${stock.numberofshares}"></td>
+    <td th:text="${stock.pricespershares}"></td>
+    <td th:text="${stock.totalprices}"></td>
+    <td th:text="${stock.getlatestmarketprice}"></td>
+    <td th:text="${stock.markettotalprice}"></td>
+
+  </tr>
+ 
+  
+</table>
+		</div>
+	</div>
+	</div>
+    <!-- Eligibility -->
+
+    <div class="col-div-4">
+      <div class="box-4">
+        <div class="content-box">
+          <p>Eligibility for next day :</p>
+          <header th:text="${qualifiedForNextDay}"></header>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Table 2-->
+
+  <div class="col-div-8">
+		<div class="box-8">
+		<div class="content-box">
+			<p><header>Buying Orders :</header></p>
+			<br/>
+			<table id="table2">
+        <tr>
+          <th onclick="sortTable('table2',0)" style="cursor: pointer;">Stock Name</th>
+          <th onclick="sortTable('table2',1)" style="cursor: pointer;">Number of shares</th>
+          <th onclick="sortTable('table2',2)" style="cursor: pointer;">Price per share</th>
+          <th onclick="sortTable('table2',3)" style="cursor: pointer;">Total Cost</th>
+          <th onclick="sortTable('table2',4)" style="cursor: pointer;">Market price per share</th>
+          <th onclick="sortTable('table2',5)" style="cursor: pointer;">Market value</th>
+      
+        </tr>
+        <tr th:each="stock1 : ${buyLists}">
+          <td th:text="${stock1.equitiesname}"></td>
+          <td th:text="${stock1.numberofshares}"></td>
+          <td th:text="${stock1.pricespershares}"></td>
+          <td th:text="${stock1.totalprices}"></td>
+          <td th:text="${stock1.getlatestmarketprice}"></td>
+          <td th:text="${stock1.markettotalprice}"></td>
+      
+        </tr>
+  
+  
+</table>
+		</div>
+	</div>
+	</div>
+    <!-- Table 3-->
+
+  <div class="col-div-8">
+		<div class="box-8">
+		<div class="content-box">
+      <p><header>Listing Stocks :</header></p>
+			<br/>
+			<table id="table3">
+        <tr>
+          <th onclick="sortTable('table3',0)" style="cursor: pointer;">Stock Name</th>
+          <th onclick="sortTable('table3',1)" style="cursor: pointer;">Number of shares</th>
+          <th onclick="sortTable('table3',2)" style="cursor: pointer;">Price per share</th>
+          <th onclick="sortTable('table3',3)" style="cursor: pointer;">Total Cost</th>
+          <th onclick="sortTable('table3',4)" style="cursor: pointer;">Market price per share</th>
+          <th onclick="sortTable('table3',5)" style="cursor: pointer;">Market value</th>
+      
+        </tr>
+        <tr th:each="stock2 : ${listedStockss}">
+          <td th:text="${stock2.equitiesname}"></td>
+          <td th:text="${stock2.numberofshares}"></td>
+          <td th:text="${stock2.pricespershares}"></td>
+          <td th:text="${stock2.totalprices}"></td>
+          <td th:text="${stock2.getlatestmarketprice}"></td>
+          <td th:text="${stock2.markettotalprice}"></td>
+      
+        </tr>
+  
+</table>
+		</div>
+	</div>
+	</div>
+	
+    <!-- Table 4-->
+
+  <div class="col-div-8">
+		<div class="box-8">
+		<div class="content-box">
+			<p><header>Your Histories :</header></p>
+			<br/>
+			<table id="table4">
+        <tr>
+          <th onclick="sortTable('table4',0)" style="cursor: pointer;">Time initiazed</th>
+          <th onclick="sortTable('table4',1)" style="cursor: pointer;">Time completed</th>
+          <th onclick="sortTable('table4',2)" style="cursor: pointer;">Activity</th>
+          <th onclick="sortTable('table4',3)" style="cursor: pointer;">Stock Name</th>
+          <th onclick="sortTable('table4',4)" style="cursor: pointer;">Number of shares</th>
+          <th onclick="sortTable('table4',5)" style="cursor: pointer;">Price per share</th>
+          <th onclick="sortTable('table4',6)" style="cursor: pointer;">Total Cost</th>
+          <th onclick="sortTable('table4',7)" style="cursor: pointer;">P&L</th>
+          <th onclick="sortTable('table4',8)" style="cursor: pointer;">P&L Point</th>
+      
+        </tr>
+        <tr th:each="stock3 : ${tradeHistorys}">
+          <td th:text="${stock3.getTimeforactivity}"></td>
+          <td th:text="${stock3.getTimeforactivity2V}"></td>
+          <td th:text="${stock3.activity}"></td>
+          <td th:text="${stock3.equitiesname}"></td>
+          <td th:text="${stock3.numberofshares}"></td>
+          <td th:text="${stock3.pricespershares}"></td>
+          <td th:text="${stock3.totalprices}"></td>
+          <td th:text="${stock3.getDifference}"></td>
+          <td th:text="${stock3.getPLtrade}"></td>
+
+        </tr>
+
+</table>
+		</div>
+	</div>
+	</div>
+		
+	<div class="clearfix"></div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  
+  $(".nav").click(function(){
+    $("#mySidenav").css('width','70px');
+    $("#main").css('margin-left','70px');
+    $(".logo").css('visibility', 'hidden');
+    $(".logo span").css('visibility', 'visible');
+     $(".logo span").css('margin-left', '-10px');
+     $(".icon-a").css('visibility', 'hidden');
+     $(".icons").css('visibility', 'visible');
+     $(".icons").css('margin-left', '-8px');
+      $(".nav").css('display','none');
+      $(".nav2").css('display','block');
+  });
+
+$(".nav2").click(function(){
+    $("#mySidenav").css('width','300px');
+    $("#main").css('margin-left','300px');
+    $(".logo").css('visibility', 'visible');
+     $(".icon-a").css('visibility', 'visible');
+     $(".icons").css('visibility', 'visible');
+     $(".nav").css('display','block');
+      $(".nav2").css('display','none');
+ });
+
+function sortTable(tableId, columnIndex) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById(tableId);
+  switching = true;
+
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[columnIndex];
+      y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+      var sortAsc = table.getAttribute("data-sort-asc") === "true";
+      if (sortAsc) {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      } else {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+
+  // Toggle the sorting order for the next click
+  var newSortAsc = !sortAsc;
+  table.setAttribute("data-sort-asc", newSortAsc.toString());
+}
+
+vcx
+
+// Update time every second
+setInterval(updateTime, 1000);
+
+ 
+</script>
+
+</body>
+
+
+</html>

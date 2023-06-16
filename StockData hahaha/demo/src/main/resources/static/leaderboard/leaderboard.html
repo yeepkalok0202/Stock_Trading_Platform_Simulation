@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en" title="Leaderboard">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EZ Trade Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+
+<body style="display: flex; flex-direction:column; gap: 20px;" >
+    
+    <audio src="diavalotheme.mp3" autoplay loop></audio>
+    <video autoplay muted loop id="myVideo">
+    <source src="purplegradient.mp4" type="video/mp4">
+    <!-- Add additional <source> elements for other video formats if desired -->
+  </video>
+  <a href="http://127.0.0.1:5500/demo/src/main/resources/static/dashboard/dashboardfinal.html">
+    <img src="trademark.png" alt="Trademark" style="width: 140px; height: 150px;">
+</a>
+  <div style="display: flex; gap: 40px; width: 100%; padding-left: 40px; padding-right: 40px; padding-bottom:40px;">
+    <main class="table">
+        <section class="table__header">
+            <h1>EZ Trade Daily Ranking</h1>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Daily PL Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="stock, index : ${userListday}">                        
+                        <td th:text="${index.count }"></td>
+                        <td th:text="${stock.username}"></td>
+                        <td th:text="${stock.getPlPointsofday}"><strong></strong></td>   
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    
+    
+    <main class="table">
+        <section class="table__header">
+            <h1>EZ Trade Leaderboard</h1>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Cumulative PL Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="stock1, index1 : ${userListcumulative}">                        
+                        <td th:text="${index1.count }"></td>
+                        <td th:text="${stock1.username}"></td>
+                        <td th:text="${stock1.getcumulativePLPoints}"><strong></strong></td>   
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+  </div>
+  
+       
+</body>
+
+</html>
