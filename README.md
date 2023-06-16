@@ -9,7 +9,7 @@ This repositories contain two major section
 ### Also for demo purpose, this API is highly customizable, you can use *Postman* to check the API response, I only included 300 first response of the Stock data of the day from bursa malaysia ->
 Refer here: 
 *https://www.bursamalaysia.com/market_information/equities_prices*
-Note that the Stock Trading Platform required the API to run, else no stock data will be committed
+#### Note that the Stock Trading Platform required the API to run, else no stock data will be committed
 ###
 -by YEEP KA LOK (22004810)
 -22004810@siswa.um.edu.my
