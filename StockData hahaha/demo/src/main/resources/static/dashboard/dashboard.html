@@ -306,8 +306,11 @@ function sortTable(tableId, columnIndex) {
   table.setAttribute("data-sort-asc", newSortAsc.toString());
 }
 
-vcx
-
+function updateTime() {
+  var currentTimeElement2 = document.getElementById('current-time2');
+  var currentTime2 = new Date().toLocaleTimeString();
+  currentTimeElement2.textContent = currentTime2;
+}
 // Update time every second
 setInterval(updateTime, 1000);
 
