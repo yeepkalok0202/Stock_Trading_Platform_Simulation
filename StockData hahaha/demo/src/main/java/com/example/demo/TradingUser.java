@@ -838,20 +838,23 @@ public class TradingUser extends UserInfo{
         }
         // update account balance & update the difference for day and cumulative
         // differecne
-        updateAccountBalance(finddifferenceforeachtrade(costbasis, a.getTotalprices()));
+        updateAccountBalance(finddifferenceforeachtrade(costbasis, a.getTotalprices()));        
+        double differencewow=(a.getTotalprices() - costbasis);        
+        double PLtrade= (differencewow/getStartingBalance())*100;
+        plPoints+=PLtrade;
+        cumulativePLPoints+=PLtrade;
+        
         if(consoleshow){
             System.out.println("Remaining account balance : RM" + getAccountBalance());
             // update P&L points as well as cumulative P&L
             System.out.println("Difference for this trade : RM" + (a.getTotalprices() - costbasis));
-            System.out.println("P/L points for this trade : " + calculatePLPoints(a.getTotalprices() - costbasis));
+            System.out.println("P/L points for this trade : " + PLtrade);
             System.out.println("P/L points for this day   : " + getPlPointsofday());
             System.out.println("Cumulative P/L points     : " + getcumulativePLPoints());
             System.out.println("=========================================================================================================================================\n");
 
         }
         //individually calculate the difference
-        double differencewow=(a.getTotalprices() - costbasis);
-        double PLtrade= (differencewow/getStartingBalance())*100;
         TransactionStock copy = new TransactionStock(a.getEquitiesname(), a.getNumberofshares(),
                 a.getPricespershares());
         copy.activity = "Sell successful";        
@@ -934,8 +937,8 @@ public class TradingUser extends UserInfo{
         Context context = new Context();
         context.setVariable("username", username);
         context.setVariable("accountBalance", accountBalance);
-        context.setVariable("plPoints", plPoints);
-        context.setVariable("cumulativePLPoints", cumulativePLPoints);
+        context.setVariable("plPoints", getPlPointsofday());
+        context.setVariable("cumulativePLPoints", getcumulativePLPoints());
         context.setVariable("StartingBalance", StartingBalance);
         context.setVariable("differenceforday", differenceforday);
         context.setVariable("cumulativeDifference", cumulativeDifference);

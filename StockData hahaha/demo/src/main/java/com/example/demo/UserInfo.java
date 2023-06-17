@@ -126,11 +126,11 @@ public class UserInfo extends Portfolio {
     //find the P&L points for each trade (call everytime for every trade)
     //will automatically count for day and cumulative
     // return the current transaction P&L points
-    public double calculatePLPoints(double differenceforeachtrade) {
-        plPoints+=(differenceforeachtrade/getStartingBalance())*100;
-        cumulativePLPoints+=(differenceforeachtrade/getStartingBalance())*100;
+    public double calculatePLPoints(double a) {
+        plPoints+=a;
+        cumulativePLPoints+=a;
     // ----------> update PLpoints & cumulativePLpoints <-------------
-        return (differenceforeachtrade/getStartingBalance())*100;
+        return a;
     }
     //return starting balance
     public double getStartingBalance() {
