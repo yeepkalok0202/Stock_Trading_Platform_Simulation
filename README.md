@@ -1,6 +1,6 @@
 # WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10
 
-This repositories contain two major section
+#### This repositories contain two major section
 ## 1- StockData hahaha 
 ### Contains all the necessary and the files needed for stock trading platform to run seamlessly, the program is found inside the UserInterface.java
 ### Also note that the GUI (graphical user interface needed to be host locally using extension i.e. Live Server) as i didnt deploy the product to server
