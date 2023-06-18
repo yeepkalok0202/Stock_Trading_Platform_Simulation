@@ -87,14 +87,16 @@ public class TradingUser extends UserInfo{
         return email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setEmail(String email){
         this.email=email;
     }
 
     // return username
-    public String getUsername() {
-        return username;
-    }
+    
 
     // reset username
     public void setUsername(String username) {
@@ -623,8 +625,18 @@ public class TradingUser extends UserInfo{
 
     // cancel buy
     // must receive arguement of same thing(dont use new operator)
-    public void cancelbuy(TransactionStock a) {        
-        StockTradingSystem.buyOrders.remove(a);
+    public void cancelbuy(TransactionStock b) {    
+        for (TransactionStock transaction : buyLists) {
+        if (transaction.getEquitiesname().equals(b.getEquitiesname()) &&
+            transaction.getNumberofshares() == b.getNumberofshares() &&
+            transaction.getPricespershares() == b.getPricespershares()) {
+            b=transaction;
+            break;
+        }
+        } 
+        TransactionStock a = b; // Create a new variable
+        a.setUser(this);   
+        StockTradingSystem.removeBuyOrder(a);
         removeBuyList(a);
         getBuyList(1);
         if(consoleshow){
@@ -876,8 +888,18 @@ public class TradingUser extends UserInfo{
 
     // cancel sell
     // must receive arguement of same thing(dont use new operator)
-    public void cancelsell(TransactionStock a) {    
-        StockTradingSystem.sellOrders.remove(a);
+    public void cancelsell(TransactionStock b) {  
+        for (TransactionStock transaction : listedStockss) {
+        if (transaction.getEquitiesname().equals(b.getEquitiesname()) &&
+            transaction.getNumberofshares() == b.getNumberofshares() &&
+            transaction.getPricespershares() == b.getPricespershares()) {
+            b=transaction;
+            break;
+        }
+        }
+        TransactionStock a= b;  
+        a.setUser(this);   
+        StockTradingSystem.removeSellOrder(a);
         removeListedStocks(a);
         getListedStocks(1);        
         if(consoleshow){

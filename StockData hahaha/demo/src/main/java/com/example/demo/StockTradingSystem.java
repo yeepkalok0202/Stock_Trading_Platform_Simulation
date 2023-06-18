@@ -10,6 +10,9 @@ import java.net.URISyntaxException;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
@@ -49,6 +52,13 @@ public class StockTradingSystem implements Serializable {
         } else {
             return false;
         }
+    }
+    public static void removeSellOrder(TransactionStock sellOrder) {
+        sellOrders.remove(sellOrder);
+    }
+    
+    public static void removeBuyOrder(TransactionStock buyOrder) {
+        buyOrders.remove(buyOrder);
     }
     
     //direct Buy From System methods @ market price (subject to lot pool availability)
@@ -153,7 +163,6 @@ public class StockTradingSystem implements Serializable {
     }
 
     //replenish the pool manually for admin to call the method...
-    @SuppressWarnings("unused")
     public static void replenishLotPool() {
         for (Stock stock : UpdateAndStoreLocal.stockDataNameBased) {
             lotPool.put(stock.getName(), 500000);
@@ -217,6 +226,7 @@ public class StockTradingSystem implements Serializable {
         while(!temp.isEmpty()){
             systemqueue.add(temp.poll());
         }
+        
         // Initialize Thymeleaf template engine
         TemplateEngine templateEngine = new TemplateEngine();
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
@@ -280,34 +290,20 @@ public class StockTradingSystem implements Serializable {
             e.printStackTrace();
         }
     }
-    public static void RenderHTMLwebsite(){
-        //update periodically the system queue html for 1 min
-        Timer timer = new Timer();
-        currentTask2 = new TimerTask() {
-            @Override
-            public void run() {
-                updateRealTimeSystemQueue();
-            }
-        };
-        timer.schedule(currentTask2, 0, 1* 60 * 1000);
-        //update periodically the real tiem stock for 3 min
-        Timer timer2 = new Timer();
-        currentTask1 = new TimerTask() {
-            @Override
-            public void run() {
-                StockDisplays.updateRealTimeStockTable();
-            }
-        };
-        timer2.schedule(currentTask1, 0, 3 * 60 * 1000);
-        //update periodically the real tiem system lot pool for 1 min
-        Timer timer3 = new Timer();
-        currentTask3 = new TimerTask() {
-            @Override
-            public void run() {
-                updateRealTimeSystemLotPool();
-            }
-        };
-        timer3.schedule(currentTask3, 0, 1 * 60 * 1000);
+    public static void RenderHTMLwebsite() {
+    // Create a scheduled executor service
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(3);
+
+        // Schedule the tasks
+
+        // Update the system queue HTML every minute
+        executor.scheduleAtFixedRate(() -> updateRealTimeSystemQueue(), 0, 1, TimeUnit.MINUTES);
+
+        // Update the real-time stock every 3 minutes
+        executor.scheduleAtFixedRate(() -> StockDisplays.updateRealTimeStockTable(), 0, 1, TimeUnit.MINUTES);
+
+        // Update the system lot pool every minute
+        executor.scheduleAtFixedRate(() -> updateRealTimeSystemLotPool(), 0, 1, TimeUnit.MINUTES);
     }
 
     
