@@ -350,14 +350,7 @@ public class UserInterface {
                         }
                         //secret bug to see bug 
                         case "test": {
-                                System.out.println("Test name :"+a.getUser(email).getUsername());
-                                System.out.println("Account balance " + a.getUser(email).getAccountBalance());
-                                System.out.println("starting balance " + a.getUser(email).getStartingBalance());
-                                System.out.println("pl day " + a.getUser(email).getPlPointsofday());
-                                System.out.println("pl cumulative " + a.getUser(email).getcumulativePLPoints());
-                                System.out.println("difference for day " + a.getUser(email).getDifferenceForDay());
-                                System.out.println("difference cumulative " + a.getUser(email).getcumulativeDifference());
-                                System.out.println("qualified for next day " + a.getUser(email).checkQualificationForNextDay());
+                                System.out.println("Direct access to own password :"+a.getUser(email).password);
                                 break;
                         }
                         default: {   //invalid input
