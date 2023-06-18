@@ -931,31 +931,65 @@ public class UserInterface {
                 return;
                 }
                 System.out.println("\nProceeding cancellation system.....\n");
-                while (!question.toLowerCase().contains("bye")) {
-                try { // direct buy
-                        System.out.println(
-                                "=========================================================================================================================================\n");
-                        System.out.println(
-                                "=====================================================     Cancellation    ===============================================================\n");
-                        System.out.println(
-                                "=========================================================================================================================================\n");
-                        System.out.print("Key in your desired stock name for cancellation [ e.g. i) APEX ii) APM [S] ....]\n>");
-                        String name = xx.nextLine();
-                        System.out.print("Key in your number of shares of particular stock[ e.g. i) 100 ii) 69 ....]\n>");
-                        String number = xx.nextLine();
-                        System.out.print(
-                                "Key in your price per share for the particular stock [ e.g. i) 0.95 ii) 69.5  iii) 69 ....]\n>");
-                        String price = xx.nextLine();
-                        System.out.println(
-                                "=========================================================================================================================================\n");
-                        a.getUser(email).cancelbuy(
-                                new TransactionStock(name.toUpperCase(), Integer.parseInt(number), Double.parseDouble(price)));
+                System.out.print(
+                        "\n-1 Cancel Buy\n-2 Cancel Sell\n\n>");
+                String input = xx.nextLine();
+                switch (input) {
+                        case"1":
+                        while (!question.toLowerCase().contains("bye")) {
+                        try { // direct buy
+                                System.out.println(
+                                        "=========================================================================================================================================\n");
+                                System.out.println(
+                                        "================================================     Cancellation of Buy Order   ========================================================\n");
+                                System.out.println(
+                                        "=========================================================================================================================================\n");
+                                System.out.print("Key in your desired stock name for cancellation [ e.g. i) APEX ii) APM [S] ....]\n>");
+                                String name = xx.nextLine();
+                                System.out.print("Key in your number of shares of particular stock[ e.g. i) 100 ii) 69 ....]\n>");
+                                String number = xx.nextLine();
+                                System.out.print(
+                                        "Key in your price per share for the particular stock [ e.g. i) 0.95 ii) 69.5  iii) 69 ....]\n>");
+                                String price = xx.nextLine();
+                                System.out.println(
+                                        "=========================================================================================================================================\n");
+                                a.getUser(email).cancelbuy(
+                                        new TransactionStock(name.toUpperCase(), Integer.parseInt(number), Double.parseDouble(price)));
+                                break;
+                        } catch (Exception e) {
+                                System.out.println("Operations could not be done. Please contact admin! ");
+                                break;
+                        }
+                        }
                         break;
-                } catch (Exception e) {
-                        System.out.println("Operations could not be done. Please contact admin! ");
+                        case"2":
+                        while (!question.toLowerCase().contains("bye")) {
+                        try { // direct buy
+                                System.out.println(
+                                        "=========================================================================================================================================\n");
+                                System.out.println(
+                                        "=================================================     Cancellation of Sell order   ======================================================\n");
+                                System.out.println(
+                                        "=========================================================================================================================================\n");
+                                System.out.print("Key in your desired stock name for cancellation [ e.g. i) APEX ii) APM [S] ....]\n>");
+                                String name = xx.nextLine();
+                                System.out.print("Key in your number of shares of particular stock[ e.g. i) 100 ii) 69 ....]\n>");
+                                String number = xx.nextLine();
+                                System.out.print(
+                                        "Key in your price per share for the particular stock [ e.g. i) 0.95 ii) 69.5  iii) 69 ....]\n>");
+                                String price = xx.nextLine();
+                                System.out.println(
+                                        "=========================================================================================================================================\n");
+                                a.getUser(email).cancelsell(
+                                        new TransactionStock(name.toUpperCase(), Integer.parseInt(number), Double.parseDouble(price)));
+                                break;
+                        } catch (Exception e) {
+                                System.out.println("Operations could not be done. Please contact admin! ");
+                                break;
+                        }
+                        }
                         break;
-                }
-
+                        default:break;
                 }
                 System.out.println("\n~Type <bye> to get out of here~");
                 question = xx.nextLine();

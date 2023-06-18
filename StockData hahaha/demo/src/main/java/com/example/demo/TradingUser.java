@@ -624,8 +624,9 @@ public class TradingUser extends UserInfo{
     // cancel buy
     // must receive arguement of same thing(dont use new operator)
     public void cancelbuy(TransactionStock a) {        
-        
+        StockTradingSystem.buyOrders.remove(a);
         removeBuyList(a);
+        getBuyList(1);
         if(consoleshow){
             System.out.println("\n["+ClockFunction.getStringCurrentTime()+"] "+username+ " : Order of  " + a.getEquitiesname() + " for " + a.getNumberofshares()
             + " for " + a.getPricespershares() + " per share is cancelled ! ");
@@ -875,8 +876,10 @@ public class TradingUser extends UserInfo{
 
     // cancel sell
     // must receive arguement of same thing(dont use new operator)
-    public void cancelsell(TransactionStock a) {            
+    public void cancelsell(TransactionStock a) {    
+        StockTradingSystem.sellOrders.remove(a);
         removeListedStocks(a);
+        getListedStocks(1);        
         if(consoleshow){
             System.out.println("\n["+ClockFunction.getStringCurrentTime()+"] "+username+" : Sell cancelled !");
             System.out.println("Time cancelled since stock listed :" + a.getdifferencebetweentime());
