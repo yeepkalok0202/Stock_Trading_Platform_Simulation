@@ -10,6 +10,7 @@
 Refer here: 
 *https://www.bursamalaysia.com/market_information/equities_prices*
 #### Note that the Stock Trading Platform required the API to run, else no stock data will be committed
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/4234ce52-9a24-4757-b9a8-af844ef6328e)
 
 ---------------------------------------
 ##### -by YEEP KA LOK (22004810)
