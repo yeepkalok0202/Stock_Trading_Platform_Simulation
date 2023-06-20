@@ -10,7 +10,13 @@
 Refer here: 
 *https://www.bursamalaysia.com/market_information/equities_prices*
 #### Note that the Stock Trading Platform required the API to run, else no stock data will be committed
-![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/4234ce52-9a24-4757-b9a8-af844ef6328e)
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/d49ce876-6fd3-4c7c-965d-0fe723a3f69f)
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/e7538352-2913-40db-8759-d355683b7345)
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/8b59b955-359d-4fd1-b2f5-966de6eea376)
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/ed32aab7-e728-4727-96f7-69c32f52fad8)
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/6a777a32-f032-4328-99e2-51f71402c325)
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/eb8c99d6-9bfd-4b11-9a18-fbab8861d391)
+![image](https://github.com/yeepkalok0202/WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10/assets/116157954/30624ee9-0069-4884-8b45-34d8ea382784)
 
 ---------------------------------------
 ##### -by YEEP KA LOK (22004810)
