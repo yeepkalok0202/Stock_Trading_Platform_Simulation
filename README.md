@@ -1,4 +1,4 @@
-# WIA1002-Stock-Trading-Platform-22004810-YEEPKALOK-OCC10
+# Stock-Trading-Platform-YEEPKALOK-
 
 #### This repositories contain two major section
 ## 1- StockData hahaha 
