@@ -12,6 +12,5 @@ Refer here:
 #### Note that the Stock Trading Platform required the API to run, else no stock data will be committed
 
 ---------------------------------------
-##### -by YEEP KA LOK (22004810)
-##### -22004810@siswa.um.edu.my
+##### -by YEEP KA LOK
 ---------------------------------------
