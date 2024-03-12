@@ -12,5 +12,5 @@ Refer here:
 #### Note that the Stock Trading Platform required the API to run, else no stock data will be committed
 
 ---------------------------------------
-in collaboration with - Zi Qin @ziqinyeow@gmail.com](https://github.com/ziqinyeow)
+in collaboration with - Zi Qin @ziqinyeow@gmail.com (https://github.com/ziqinyeow)
 ---------------------------------------
