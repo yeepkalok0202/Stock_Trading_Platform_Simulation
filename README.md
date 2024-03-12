@@ -1,6 +1,6 @@
 # Stock-Trading-Platform
 
-##### This repositories contain two major section
+### This repositories contain two major section
 ## 1- StockData hahaha 
 #### Contains all the necessary and the files needed for stock trading platform to run seamlessly, the program is found inside the UserInterface.java
 #### Also note that the GUI (graphical user interface needed to be host locally using extension i.e. Live Server) no deploy for the moment.
