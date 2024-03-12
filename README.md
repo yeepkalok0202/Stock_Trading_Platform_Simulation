@@ -1,4 +1,4 @@
-# Stock-Trading-Platform-
+# Stock-Trading-Platform
 
 ##### This repositories contain two major section
 ## 1- StockData hahaha 
