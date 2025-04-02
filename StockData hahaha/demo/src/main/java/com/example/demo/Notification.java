@@ -15,7 +15,7 @@ public class Notification implements Serializable{
             System.out.println("SystemTray is not supported on this platform.");
             return;
         }
-
+        System.out.println("gg");
         // Create a SystemTray instance
         SystemTray systemTray = SystemTray.getSystemTray();
 
