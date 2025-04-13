@@ -1,4 +1,4 @@
-# Stock-Trading-Platform-Simulation_ EZTrade
+# Stock-Trading-Platform-Simulation EZTrade
 
 ### This repositories contain two major section
 ## 1- StockData hahaha 
@@ -11,6 +11,3 @@ Refer here:
 *https://www.bursamalaysia.com/market_information/equities_prices*
 #### Note that the Stock Trading Platform required the API to run, else no stock data will be committed
 
----------------------------------------
-in collaboration with - Zi Qin @ziqinyeow@gmail.com (https://github.com/ziqinyeow)
----------------------------------------
